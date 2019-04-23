@@ -5,12 +5,9 @@
   "main": "server.js",
   "scripts": {
     "client": "node scripts/start-client.js",
-    "startbackend": " PROJECT_ID='np-sc1-distributionservices' node index.js",
     "start": "concurrently \"nodemon server.js\" \"npm run client\"",
     "build": "node scripts/build.js",
-    "prodStart": "NODE_ENV=production node index.js",
-    "prepublish": "npm run build",
-    "installDeps": "npm i && cd client && npm i ",
+    "install": "npm i && cd client && npm i ",
     "test": "jest --coverage"
   },
   "repository": {
