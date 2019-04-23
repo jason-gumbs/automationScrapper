@@ -7,7 +7,7 @@
     "client": "node scripts/start-client.js",
     "start": "concurrently \"nodemon server.js\" \"npm run client\"",
     "build": "node scripts/build.js",
-    "installDeps": "npm i && cd client && npm i ",
+    "installDeps": "npm i && cd client && npm i "
   },
   "repository": {
     "type": "git",
