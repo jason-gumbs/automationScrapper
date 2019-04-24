@@ -51,14 +51,19 @@ app.post('/api/productdetails', async (req, res) => {
            }
            console.log(data)
            res.send(data)})
+       .then(body => body = {
+           sales: [],
+           country: [],
+           rating: ""
+       })
        .catch(err =>{
        res.status(404).send(err)
    })
 })
 const getdata = async (url) => {
      productid = await getProjectID(url)
-    let data = await getRating(url)
-         data = await getproductDetails()
+    // let data = await getRating(url)
+         let data = await getproductDetails()
      return data
 
 }
