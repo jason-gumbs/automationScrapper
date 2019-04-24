@@ -58,7 +58,6 @@ app.post('/api/productdetails', async (req, res) => {
            sales: [],
            country: [],
            rating: ""
-
        }
        })
        .catch(err =>{
