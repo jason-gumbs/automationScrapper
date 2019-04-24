@@ -30,17 +30,17 @@ let sameDate = true
 let dataComplete = false
 
 
-const getRating = async (url) => {
-   await nightmare
-        .goto(url)
-        .evaluate(() => document.querySelector('.percent-num').innerText)
-        .end()
-        .then(data => body.rating = data)
-        .catch(error => {
-            console.error('Search failed:', error)
-        })
-    return body
-}
+// const getRating = async (url) => {
+//    await nightmare
+//         .goto(url)
+//         .evaluate(() => document.querySelector('.percent-num').innerText)
+//         .end()
+//         .then(data => body.rating = data)
+//         .catch(error => {
+//             console.error('Search failed:', error)
+//         })
+//     return body
+// }
 
 
 app.post('/api/productdetails', async (req, res) => {
@@ -49,12 +49,17 @@ app.post('/api/productdetails', async (req, res) => {
            if (data == ""){
                throw new Error
            }
-           console.log(data)
+           body = {
+               sales: [],
+               country: [],
+               rating: ""}
            res.send(data)})
-       .then(body => body = {
+       .then(body => {body = {
            sales: [],
            country: [],
            rating: ""
+
+       }
        })
        .catch(err =>{
        res.status(404).send(err)
