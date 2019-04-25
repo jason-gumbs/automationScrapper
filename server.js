@@ -88,13 +88,16 @@ const getproductDetails = async () => {
         .then(function (response) {
             var myObj = JSON.parse(response.data.replace(/[()]/g, '').replace('jQuery18309305320967874013_1555893591847', '').replace(';', ''));
             myObj.records.forEach(arrayItem => {
+                if (parseInt(arrayItem.date.split(" ")[0]) == parseInt(CurrentDate)) {
+                    body.sales.push(parseInt(arrayItem.quantity))
+                    body.country.push(arrayItem.countryCode)
+                }
                 if (!(parseInt(arrayItem.date.split(" ")[0]) == parseInt(CurrentDate))) {
                     sameDate = false
                     willreturn = true
                     console.log("hey")
                 }
-                body.sales.push(parseInt(arrayItem.quantity))
-                body.country.push(arrayItem.countryCode)
+
 
             })
             if (sameDate) {
