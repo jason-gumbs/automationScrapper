@@ -92,8 +92,7 @@ const getproductDetails = async () => {
             myObj.records.forEach(arrayItem => {
                 if (parseInt(arrayItem.date.split(" ")[0]) == parseInt(CurrentDate)) {
                     body.sales.push(parseInt(arrayItem.quantity))
-                    emojiFlags.countryCode(arrayItem.countryCode)
-                    body.country.push(emojiFlags.countryCode(arrayItem.countryCode).name)
+                    body.country.push(emojiFlags.countryCode(arrayItem.countryCode))
                     body.emoji.push(emojiFlags.countryCode(arrayItem.countryCode).emoji)
                 }
                 if (!(parseInt(arrayItem.date.split(" ")[0]) == parseInt(CurrentDate))) {
