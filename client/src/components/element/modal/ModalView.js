@@ -45,8 +45,7 @@ const ModalView = (props) => {
         console.log(k);
 
         return <tr key={i}>
-            <td>{i}</td>
-            <td>{k[0]} </td>
+            <td>{ k[0]} </td>
             <td>{k[1]}</td>
         </tr>
     })
@@ -70,7 +69,6 @@ const ModalView = (props) => {
                 <Table striped bordered hover size="sm">
                     <thead>
                     <tr>
-                        <th>#</th>
                         <th>Country</th>
                         <th>Amount purchase</th>
                     </tr>

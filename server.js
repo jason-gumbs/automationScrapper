@@ -6,6 +6,7 @@ var moment = require('moment');
 let bodyParser = require(`body-parser`);
 var express = require(`express`)
 var cors = require(`cors`)
+var emojiFlags = require('emoji-flags');
 
 var app = express()
 app.use(cors())
@@ -21,6 +22,7 @@ let country = []
 let body = {
     sales: [],
     country: [],
+    emoji: [],
     rating: "",
     totalOrders:""
 }
@@ -90,7 +92,9 @@ const getproductDetails = async () => {
             myObj.records.forEach(arrayItem => {
                 if (parseInt(arrayItem.date.split(" ")[0]) == parseInt(CurrentDate)) {
                     body.sales.push(parseInt(arrayItem.quantity))
-                    body.country.push(arrayItem.countryCode)
+                    emojiFlags.countryCode(arrayItem.countryCode)
+                    body.country.push(emojiFlags.countryCode(arrayItem.countryCode).name)
+                    body.emoji.push(emojiFlags.countryCode(arrayItem.countryCode).emoji)
                 }
                 if (!(parseInt(arrayItem.date.split(" ")[0]) == parseInt(CurrentDate))) {
                     sameDate = false
