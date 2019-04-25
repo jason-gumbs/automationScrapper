@@ -86,6 +86,8 @@ const ModalView = (props) => {
                 <dd className="col">{totalSales|| "N/A"}</dd>
                 <dt className="col">Rating</dt>
                 <dd className="col">{props.data.rating || "N/A"}</dd>
+                <dt className="col">Total orders</dt>
+                <dd className="col">{props.data.totalOrders || "N/A"}</dd>
             </dl>
 
         </Modal>)

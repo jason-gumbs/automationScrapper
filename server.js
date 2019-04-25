@@ -21,7 +21,8 @@ let country = []
 let body = {
     sales: [],
     country: [],
-    rating: ""
+    rating: "",
+    totalOrders:""
 }
 let willreturn = true
 let page = 1;
@@ -30,17 +31,19 @@ let sameDate = true
 let dataComplete = false
 
 
-// const getRating = async (url) => {
-//    await nightmare
-//         .goto(url)
-//         .evaluate(() => document.querySelector('.percent-num').innerText)
-//         .end()
-//         .then(data => body.rating = data)
-//         .catch(error => {
-//             console.error('Search failed:', error)
-//         })
-//     return body
-// }
+const getRating = async (url) => {
+
+    await axios.get(url).then(response => {
+        // Then, we load that into cheerio and save it to $ for a shorthand selector
+        let $ = cheerio.load(response.data);
+         body.rating = $('.percent-num').text();
+         body.totalOrders = $('#j-order-num').text();
+    })        .catch(error => {
+        console.error('Search failed:', error)
+    })
+    return body
+
+}
 
 
 app.post('/api/productdetails', async (req, res) => {
@@ -66,9 +69,9 @@ app.post('/api/productdetails', async (req, res) => {
 })
 const getdata = async (url) => {
      productid = await getProjectID(url)
-    // let data = await getRating(url)
-         let data = await getproductDetails()
-     return data
+    let data = await getRating(url)
+          data = await getproductDetails()
+    return data
 
 }
 
